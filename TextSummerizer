@@ -1,0 +1,56 @@
+text="The brain is an organ that serves as the center of the nervous system in all vertebrate and most invertebrate animals. The brain is located in the head, usually close to the sensory organs for senses such as vision. The brain is the most complex organ in a vertebrate's body. In a human, the cerebral cortex contains approximately 10–20 billion neurons,[1] and the estimated number of neurons in the cerebellum is 55–70 billion.[1] Each neuron is connected by synapses to several thousand other neurons. These neurons communicate with one another by means of long protoplasmic fibers called axons, which carry trains of signal pulses called action potentials to distant parts of the brain or body targeting specific recipient cellPhysiologically, the function of the brain is to exert centralized control over the other organs of the body. The brain acts on the rest of the body both by generating patterns of muscle activity and by driving the secretion of chemicals called hormones. This centralized control allows rapid and coordinated responses to changes in the environment. Some basic types of responsiveness such as reflexes can be mediated by the spinal cord or peripheral ganglia, but sophisticated purposeful control of behavior based on complex sensory input requires the information integrating capabilities of a centralized brain.The operations of individual brain cells are now understood in considerable detail but the way they cooperate in ensembles of millions is yet to be solved.[2] Recent models in modern neuroscience treat the brain as a biological computer, very different in mechanism from an electronic computer, but similar in the sense that it acquires information from the surrounding world, stores it, and processes it in a variety of ways.This article compares the properties of brains across the entire range of animal species, with the greatest attention to vertebrates. It deals with the human brain insofar as it shares the properties of other brains. The ways in which the human brain differs from other brains are covered in the human brain article. Several topics that might be covered here are instead covered there because much more can be said about them in a human context. The most important is brain disease and the effects of brain damage, that are covered in the human brain articl"
+
+
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize, sent_tokenize
+
+stopWords = set(stopwords.words("english"))
+words = word_tokenize(text)
+
+freqTable = dict()
+for word in words:
+    word = word.lower()
+    if word in stopWords:
+        continue
+    if word in freqTable:
+        freqTable[word] += 1
+    else:
+        freqTable[word] = 1
+
+sentences = sent_tokenize(text)
+sentenceValue = dict()
+for sentence in sentences:
+     for index, wordValue in enumerate(freqTable, start=1):
+          if wordValue in sentence.lower(): # index[0] return word
+               if sentence in sentenceValue:  
+                    sentenceValue[sentence] += index # index return value of occurence of that word
+                    #sentenceValue.update({sentence: index})
+                    #print(sentenceValue)
+               else:
+                   # sentenceValue[sentence] = wordValue
+                    sentenceValue[sentence] = index
+                    #print(sentenceValue)
+
+for w in sentenceValue[akh]:
+    print(w)
+
+akh=list(sentenceValue)
+akh[0]
+sentenceValue[akh[0]]
+summery=""
+su=""
+
+
+
+count=0
+for w in akh:
+    count+=sentenceValue[w]
+
+
+su=' '
+for w in akh:
+    if sentenceValue[w]>(1.5*average):
+        su+=" "+w
+
+su  #to print the summery
+
