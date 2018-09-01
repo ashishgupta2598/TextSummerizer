@@ -37,8 +37,6 @@ for w in sentenceValue[akh]:
 akh=list(sentenceValue)
 akh[0]
 sentenceValue[akh[0]]
-summery=""
-su=""
 
 
 
