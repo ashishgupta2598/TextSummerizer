@@ -4,12 +4,12 @@ text="The brain is an organ that serves as the center of the nervous system in a
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize, sent_tokenize
 
-stopWords = set(stopwords.words("english"))
-words = word_tokenize(text)
+stopWords = set(stopwords.words("english"))#Removing all the stpwords like is,am,etc.
+words = word_tokenize(text)#now convert all string or text into words.
 
-freqTable = dict()
+freqTable = dict()#making a frequency table
 for word in words:
-    word = word.lower()
+    word = word.lower()#words into lowercase
     if word in stopWords:
         continue
     if word in freqTable:
@@ -17,7 +17,7 @@ for word in words:
     else:
         freqTable[word] = 1
 
-sentences = sent_tokenize(text)
+sentences = sent_tokenize(text)#converting text into Sentences 
 sentenceValue = dict()
 for sentence in sentences:
      for index, wordValue in enumerate(freqTable, start=1):
